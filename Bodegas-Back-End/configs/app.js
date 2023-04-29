@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(cors())
 app.use(helmet())
 app.use(morgan('dev'))
-app.use(express)
 /* app.use('/user', userRoutes)
 app.use('/cellar', cellarRoutes)
 app.use('Service', serviceRoutes) */
