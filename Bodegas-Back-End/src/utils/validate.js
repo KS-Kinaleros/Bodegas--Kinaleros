@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt');
 
 //validacion, encriptacion, comparaciones de encriptacion
 
-exports.validateDate = (data)=>{
+exports.validateData = (data)=>{
     let keys = Object.keys(data), msg = '';
     for(let key of keys){
         if( data[key] !==null && 

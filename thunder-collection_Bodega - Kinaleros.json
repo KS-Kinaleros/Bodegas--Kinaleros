@@ -1,0 +1,150 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Bodega - Kinaleros",
+    "dateExported": "2023-04-29T22:22:25.344Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "Cellar",
+            "containerId": "",
+            "created": "2023-04-29T22:20:51.188Z",
+            "sortNum": 10000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "17f1a07f-0e09-430c-afe4-2d0ce3b92100",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "add cellar",
+            "url": "cellar/save",
+            "method": "POST",
+            "sortNum": 35000,
+            "created": "2023-04-29T22:20:51.189Z",
+            "modified": "2023-04-29T22:20:51.189Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "B4"
+                    },
+                    {
+                        "name": "description",
+                        "value": "solo tiene una ventana"
+                    },
+                    {
+                        "name": "size",
+                        "value": "6 x 12"
+                    },
+                    {
+                        "name": "location",
+                        "value": "zona 15"
+                    },
+                    {
+                        "name": "price",
+                        "value": "200"
+                    },
+                    {
+                        "name": "availability",
+                        "value": "available"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "043f63c1-7a84-4d31-a1b2-33d70521e116",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "search for name",
+            "url": "cellar/search",
+            "method": "POST",
+            "sortNum": 37500,
+            "created": "2023-04-29T22:20:51.193Z",
+            "modified": "2023-04-29T22:20:51.193Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "b4"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "e13d3b6c-4513-48ad-bc2e-071769b3d391",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "get cellar",
+            "url": "cellar/get",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-29T22:20:51.194Z",
+            "modified": "2023-04-29T22:20:51.194Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "3eb7b5b4-aaa0-469b-bde2-95a70a240fb1",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "update cellar",
+            "url": "cellar/update/644d88da4755084f366fe168",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2023-04-29T22:20:51.195Z",
+            "modified": "2023-04-29T22:20:51.195Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "C12"
+                    },
+                    {
+                        "name": "description",
+                        "value": "ya tiene 2 ventas"
+                    },
+                    {
+                        "name": "availability",
+                        "value": "busy"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "80cda771-95d0-4022-ad92-d732bb3c06fc",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "09f8511f-49ce-4d5e-9f0c-5ca45edaf74e",
+            "name": "delete cellar",
+            "url": "cellar/delete/644d88855e30d8acc91400a4",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2023-04-29T22:20:51.196Z",
+            "modified": "2023-04-29T22:20:51.196Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "localhost:3200/"
+        }
+    }
+}
