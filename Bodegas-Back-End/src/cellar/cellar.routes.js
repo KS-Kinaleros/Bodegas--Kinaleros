@@ -10,5 +10,7 @@ api.put('/update/:id', cellarController.updateCellar)
 api.delete('/delete/:id', cellarController.deleteCellar)
 api.get('/get', cellarController.getCellars)
 api.post('/search', cellarController.searchCellar)
+api.put('/availability/:id', [ensureAuth, isAdmin], cellarController.availability);
+
 
 module.exports = api;

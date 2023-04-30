@@ -90,3 +90,30 @@ exports.deleteCellar = async (req, res) => {
         return res.status(500).send({ message: 'Error deleting cellar' })
     }
 }
+
+exports.availability = async(req, res) =>{
+    try{
+      let bodegaId = req.params.id
+      let {estado} = req.body;
+      if( !estado ||
+        !(
+            estado == 'Habilitado'   ||
+            estado == 'Desabilitado' 
+        )
+    ) return res.status(418).send({message: 'Invalid status'});
+      const existEstado = await Bodega.findOneAndUpdate(
+        {_id: bodegaId},
+        {availability: estado},
+        {new: true}
+      )
+  
+      if(!existEstado) return res.status(418).send({message: 'Estado no se pudo actualizar'});
+          return res.send({message: 'Estado Actualizado', existEstado});
+  
+    }catch(err){
+      console.error(err);
+      return res.status(500).send({message: "Error al cambiar esdato"})
+    }
+  };
+  
+  
