@@ -1,7 +1,7 @@
 {
     "client": "Thunder Client",
     "collectionName": "Bodega - Kinaleros",
-    "dateExported": "2023-04-30T02:22:37.385Z",
+    "dateExported": "2023-04-30T03:48:55.008Z",
     "version": "1.1",
     "folders": [
         {
@@ -17,6 +17,13 @@
             "containerId": "",
             "created": "2023-04-30T02:22:25.644Z",
             "sortNum": 20000
+        },
+        {
+            "_id": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "User",
+            "containerId": "",
+            "created": "2023-04-30T03:48:27.700Z",
+            "sortNum": 30000
         }
     ],
     "requests": [
@@ -241,6 +248,20 @@
             "tests": []
         },
         {
+            "_id": "db03e072-90da-44c0-ad7f-fe3cf8687950",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "test",
+            "url": "user/test",
+            "method": "GET",
+            "sortNum": 110000,
+            "created": "2023-04-30T03:48:27.700Z",
+            "modified": "2023-04-30T03:48:27.700Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
             "_id": "a46a1f36-d7ac-44cb-a482-009847ad9868",
             "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
             "containerId": "91f3a02d-b132-431c-a7d6-f54a2bc9b153",
@@ -251,6 +272,158 @@
             "created": "2023-04-30T02:22:25.649Z",
             "modified": "2023-04-30T02:22:25.645Z",
             "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "677cd599-dafc-4bb9-918d-c474bbb7ff18",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "save client",
+            "url": "user/saveClient",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2023-04-30T03:48:27.701Z",
+            "modified": "2023-04-30T03:48:27.700Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "an"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "cha"
+                    },
+                    {
+                        "name": "username",
+                        "value": "ancha"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "123"
+                    },
+                    {
+                        "name": "email",
+                        "value": "ancha@"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "73663597-48b1-4120-98d7-ecf4ff97f128",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "save user",
+            "url": "user/saveUser",
+            "method": "POST",
+            "sortNum": 140000,
+            "created": "2023-04-30T03:48:27.702Z",
+            "modified": "2023-04-30T03:48:27.700Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "an"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "cha"
+                    },
+                    {
+                        "name": "username",
+                        "value": "anchali"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "123"
+                    },
+                    {
+                        "name": "email",
+                        "value": "ancha@"
+                    },
+                    {
+                        "name": "password",
+                        "value": "123"
+                    },
+                    {
+                        "name": "role",
+                        "value": "admin"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "5da882cc-f31d-460f-b93b-78c262cb9557",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "update user",
+            "url": "user/update/644d7bed63d62d24bb0a6f0f",
+            "method": "PUT",
+            "sortNum": 145000,
+            "created": "2023-04-30T03:48:27.703Z",
+            "modified": "2023-04-30T03:48:27.700Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkN2JlZDYzZDYyZDI0YmIwYTZmMGYiLCJuYW1lIjoiYW4iLCJzdXJuYW1lIjoiY2hhIiwidXNlcm5hbWUiOiJhbmNoYWxpIiwiZW1haWwiOiJhbmNoYUAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2ODI4MDA3NjksImV4cCI6MTY4MjgwNzk2OX0.eEF3B9f45ZiqLTN6QPIWmJZtDYe3VrfJ8ZzcOkv9WoE\""
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "angel"
+                    },
+                    {
+                        "name": "surname",
+                        "value": "chali"
+                    },
+                    {
+                        "name": "username",
+                        "value": "angelchali02"
+                    },
+                    {
+                        "name": "phone",
+                        "value": "1234555"
+                    }
+                ]
+            },
+            "tests": []
+        },
+        {
+            "_id": "6c06e155-03f8-4738-94a3-baafd05735f8",
+            "colId": "01716c2b-920e-42d5-a400-dffddc786ebc",
+            "containerId": "05e58231-576c-4838-8d87-22ab8d2f9ac0",
+            "name": "deleted user",
+            "url": "user/delete/644d7bed63d62d24bb0a6f0f",
+            "method": "DELETE",
+            "sortNum": 150000,
+            "created": "2023-04-30T03:48:27.704Z",
+            "modified": "2023-04-30T03:48:27.700Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDRkN2JlZDYzZDYyZDI0YmIwYTZmMGYiLCJuYW1lIjoiYW4iLCJzdXJuYW1lIjoiY2hhIiwidXNlcm5hbWUiOiJhbmNoYWxpIiwiZW1haWwiOiJhbmNoYUAiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE2ODI4MDA3NjksImV4cCI6MTY4MjgwNzk2OX0.eEF3B9f45ZiqLTN6QPIWmJZtDYe3VrfJ8ZzcOkv9WoE\""
+                }
+            ],
             "params": [],
             "tests": []
         }
