@@ -18,7 +18,7 @@ app.use(helmet())
 app.use(morgan('dev'))
 app.use('/user', userRoutes)
 app.use('/cellar', cellarRoutes)
-app.use('Service', serviceRoutes) 
+app.use('/service', serviceRoutes) 
 
 exports.initServer = ()=>{
     app.listen(port);
