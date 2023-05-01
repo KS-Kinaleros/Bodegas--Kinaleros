@@ -44,8 +44,13 @@ exports.loginUser = async (req, res) => {
         let user = await User.findOne({ username: data.username })
         //validar la contraseña
         if (user && await checkPassword(data.password, user.password)) {
+            let userLogged = {
+                name: user.name,
+                username: user.username,
+                role: user.role
+            }
             let token = await createToken(user)
-            return res.send({ message: "user logged satisfactoriamente", token })
+            return res.send({ message: "user logged satisfactoriamente", token, userLogged })
         }
         return res.status(400).send({ message: "invalid credentials" })
     } catch (err) {
