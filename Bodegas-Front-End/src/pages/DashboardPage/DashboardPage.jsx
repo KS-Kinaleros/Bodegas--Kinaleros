@@ -24,11 +24,11 @@ export const DashboardPage = () => {
             <span className='text'>Bodegas - KS</span>
           </a>
           <ul className='side-menu top'>
-            <li className='active'>
+{/*             <li className='active'>
               <button>
                 <span className='text'>Control Panel</span>
               </button>
-            </li>
+            </li> */}
             <li>
               <Link to='cellars'>
                 <button>
