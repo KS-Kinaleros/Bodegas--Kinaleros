@@ -8,7 +8,8 @@ export const CardCellar = ({title, description, location,}) => {
           <h5 className='card-title'>{title}</h5>
           <p className='card-text'>{ description}</p>
           <p className='card-text'>{location }</p>
-          <a href='#' className='btn btn-primary'>More Info</a>
+          <button className='btn btn-warning'>Editar</button>
+          <button className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>

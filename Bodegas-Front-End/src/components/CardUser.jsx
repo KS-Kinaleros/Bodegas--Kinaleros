@@ -9,7 +9,8 @@ export const CardUsers = ({ title, surname, phone, email }) => {
           <p className='card-text'>{surname}</p>
           <p className='card-text'>{phone}</p>
           <p className='card-text'>{email}</p>
-          <a href='#' className='btn btn-primary'>More Info</a>
+          <button className='btn btn-warning'>Editar</button>
+          <button className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>

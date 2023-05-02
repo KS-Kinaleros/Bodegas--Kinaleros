@@ -9,7 +9,8 @@ export const CardLease = ({title, client, worker, total}) => {
           <p className='card-text'>{client}</p>
           <p className='card-text'>{worker}</p>
           <p className='card-text'>{total}</p>
-          <a href='#' className='btn btn-primary'>More Info</a>
+          <button className='btn btn-warning'>Editar</button>
+          <button className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>
