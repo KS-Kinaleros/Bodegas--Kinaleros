@@ -21,7 +21,6 @@ const leaseSchema = mongoose.Schema({
     additionalService: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'AddService',
-        require: true
     },
     total: {
         type: Number,
