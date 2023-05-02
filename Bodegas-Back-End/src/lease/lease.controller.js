@@ -1,6 +1,10 @@
 'use strict'
 
 const Lease = require('./lease.model')
+const infoClient = ['name', 'surname']
+const infoWorker = ['name', 'surname']
+const infoCellar = ['name', 'description']
+const infoAddService = ['name', 'description']
 
 exports.test = (req, res) => {
     res.send({ message: 'Test function is running' })
@@ -63,7 +67,7 @@ exports.deleteLease = async (req, res) => {
 
 exports.getLease = async (req, res) => {
     try {
-        let lease = await Lease.find();
+        let lease = await Lease.find().populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService);
         return res.send({message:"Lease found", lease})
     } catch (err) {
         console.error(err)
