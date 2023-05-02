@@ -43,6 +43,9 @@ export const LeasePage = () => {
             })
           }
         </div>
+        <div>
+        <button className='btn btn-primary'>Agregar</button>
+      </div>
       </main>
     </>
   )

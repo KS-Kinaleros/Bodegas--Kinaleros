@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { CardUsers } from '../components/CardUsers'
+import { CardUsers } from '../components/CardUser'
 import axios from 'axios'
 
 export const UserPage = () => {
@@ -46,6 +46,9 @@ export const UserPage = () => {
               )
             })
           }
+        </div>
+        <div>
+          <button className='btn btn-primary'>Agregar</button>
         </div>
       </main>
     </>

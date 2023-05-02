@@ -44,6 +44,9 @@ export const AddServicePage = () => {
             })
           }
         </div>
+        <div>
+          <button className='btn btn-primary'>Agregar</button>
+        </div>
       </main>
     </>
   )

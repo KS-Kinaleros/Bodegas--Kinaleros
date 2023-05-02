@@ -7,7 +7,8 @@ export const CardAddService = ({title, description}) => {
         <div className="card-body">
           <h5 className='card-title'>{ title }</h5>
           <p className='card-text'>{ description }</p>
-          <a href='#' className='btn btn-primary'>More Info</a>
+          <button className='btn btn-warning'>Editar</button>
+          <button className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>
