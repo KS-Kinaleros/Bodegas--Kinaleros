@@ -11,6 +11,7 @@ import { LeasePage } from './pages/LeasePage'
 import { AddServicePage } from './pages/AddServicePage'
 
 
+
 export const AuthContext = createContext();
 
 export const Index = () => {
@@ -47,11 +48,11 @@ export const Index = () => {
                     children: [
                         {
                             path: 'users',
-                            element: <UserPage/>
+                            element: <UserPage/>,
                         },
                         { 
                             path: 'cellars',
-                            element: <CellarPage/>
+                            element: <CellarPage/>,
                         },
                         {
                             path: 'leases',
