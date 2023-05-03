@@ -16,6 +16,7 @@ exports.userDefault = async (req, res) => {
             username:"admin",
             password:"admin",
             phone:"12345678",
+            email:'admin@',
             role:"admin"
         }
         data.password = await encrypt(data.password)
