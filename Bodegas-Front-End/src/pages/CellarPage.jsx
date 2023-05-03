@@ -1,19 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { CardCellar } from '../components/CardCellar'
+import { Link } from 'react-router-dom'
+import { AddCellar } from '../components/Add/AddCellar'
 
 export const CellarPage = () => {
   const [cellars, setCellars] = useState([{}])
-  const [form, setForm] = useState({
-    name: ''
-  })
-  
-  const handleChange = (e)=>{
-    setForm({
-      ...form,
-      [e.target.name]: e.target.value
-    })
-  }
 
   const getCellars = async () => {
     try {
@@ -44,12 +36,14 @@ export const CellarPage = () => {
 
   return (
     <>
+      <AddCellar></AddCellar>
       <main>
         <div className="left binding color">
           <i className="fa-solid fa-warehouse"></i>
           |  CONTROL CELLAR
         </div>
 
+        {/* bara de busqueda */}
         <div>
           <div className="input-group rounded">
             <input /* onChange={handleChange} */ name='name' type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
@@ -58,9 +52,6 @@ export const CellarPage = () => {
             </span>
           </div>
         </div>
-
-
-
 
         <div className='row g-0 justify-content-center'>
           {
@@ -76,8 +67,10 @@ export const CellarPage = () => {
             })
           }
         </div>
+
+        {/* Boton para agregar*/}
         <div>
-          <button className='btn btn-primary'>Agregar</button>
+            <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal" >Agregar</button>
         </div>
       </main>
     </>
