@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { CardLease } from '../components/CardLease'
 import axios from 'axios'
+import { AddLease } from '../components/Add/AddLease'
 
 export const LeasePage = () => {
   const [cellars, setCellars] = useState([{}])
@@ -22,9 +23,10 @@ export const LeasePage = () => {
 
   return (
     <>
+    <AddLease></AddLease>
       <main>
         <div className="left binding color">
-        <i class="fa-solid fa-warehouse"></i>
+        <i className="fa-solid fa-warehouse"></i>
           | CONTROL LEASES
         </div>
 
@@ -44,7 +46,7 @@ export const LeasePage = () => {
           }
         </div>
         <div>
-        <button className='btn btn-primary'>Agregar</button>
+        <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal" >Agregar</button>
       </div>
       </main>
     </>

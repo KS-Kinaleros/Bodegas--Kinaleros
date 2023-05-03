@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export const AddLease = () => {
-    const title = "Add Cellar"
+    const title = "Add Lease"
+    const [users, setUsers] = useState([])
+    const [cellars, setCellars] = useState([])
+    const [addServices, setAddServices] = useState([])
+
 
     const [form, setForm] = useState({
         client: '',
@@ -19,42 +24,138 @@ export const AddLease = () => {
 
     }
 
-    const AddLease = async () => {
+    const getUsers = async () => {
         try {
-            const { data } = axios.post('http://localhost:3200/lease/save', form)
+            const { data } = await axios('http://localhost:3200/user/getUsers')
+            setUsers(data.users)
         } catch (err) {
-            console.log(err)
-            throw new Error(err.response.message || 'Error add cellar')
+            console.log(err);
         }
     }
 
+    const getCellars = async () => {
+        try {
+            const { data } = await axios('http://localhost:3200/cellar/get')
+            setCellars(data.cellar)
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    const getAddServices = async () => {
+        try {
+            const { data } = await axios('http://localhost:3200/service/get')
+            setAddServices(data.addService)
+        } catch (error) {
+            console.log(err);
+        }
+    }
+
+    const addLease = async () => {
+        try {
+            const { data } = await axios.post('http://localhost:3200/lease/save', form)
+            alert(data.message)
+            window.location.reload()
+        } catch (err) {
+            console.log(err)
+            alert(err.response.data.message)
+        }
+    }
+
+    useEffect(()=> {getUsers();
+    getCellars();
+    getAddServices();} ,[])
+
+
     return (
         <>
-            <h1>{title}</h1>
-            <form className="m-5 text-center">
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Client</label>
-                    <input onChange={handleChange} name='' type="text" className="form-control" required />
+            <div className="modal" tabIndex="-1" id="myModal">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        {/* titulo */}
+                        <div className='modal-header'>
+                            <h1 className="modal-title">{title}</h1>
+                        </div>
+
+                        {/* formulario */}
+                        <div className='modal-body'>
+
+                            {/* client */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Client</label>
+                                {/* <input onChange={handleChange} name='name' type="text" className="form-control" required /> */}
+                                <select className="form-control" name="client" >
+                                    {
+                                        users.map(({ _id, name }, i) => {
+                                            return (
+                                                <option key={i} value={_id}> {name} </option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+                            {/* worker */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Worker</label>
+                                {/* <input onChange={handleChange} name='description' type="text" className="form-control" required /> */}
+                                <select className="form-control" name="worker" >
+                                    {
+                                        users.map(({ _id, name }, i) => {
+                                            return (
+                                                <option key={i} value={_id}> {name} </option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+
+                            {/* cellar */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Cellar</label>
+                                {/* <input onChange={handleChange} name='size' type="text" className="form-control" required /> */}
+                                <select className="form-control" name="cellar" >
+                                    {
+                                        cellars.map(({ _id, name }, i) => {
+                                            return (
+                                                <option key={i} value={_id}>{name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+                            {/* additionalService */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Aditional Service</label>
+                                {/* <input onChange={handleChange} name='location' type="text" className="form-control" required /> */}
+                                <select className="form-control" name="additionalService" >
+                                    {
+                                        addServices.map(({ _id, name }, i) => {
+                                            return (
+                                                <option key={i} value={_id}>{name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+
+                            {/* total */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">Total</label>
+                                <input onChange={handleChange} type="number" className="form-control" name='total' required />
+                            </div>
+
+                            {/* botones para cancelar o agregar */}
+                            <div className='modal-footer'>
+                                <button onClick={() => addLease()} type="submit" className="btn btn-primary">Add Cellar</button>
+                                <button type="submit" className="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Worker</label>
-                    <input onChange={handleChange} name='' type="text" className="form-control" required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Cellar</label>
-                    <input onChange={handleChange} name='' type="text" className="form-control" required />
-                    <input  type="number" className="form-control" required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Additional Service</label>
-                    <input onChange={handleChange} name='' type="text" className="form-control" required />
-                </div>
-                <div className="mb-3">
-                    <label htmlFor="" className="form-label">Total</label>
-                    <input onChange={handleChange} name='' type="text" className="form-control" required />
-                </div>
-                <button onClick={(e)=> AddLease(e)} type="submit" className="btn btn-primary">Add</button>
-            </form>
+            </div>
         </>
     )
 }
