@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { CardUsers } from '../components/CardUser'
 import axios from 'axios'
+import { AddUser } from '../components/Add/AddUser'
 
 export const UserPage = () => {
   const [users, setUsers] = useState([{}])
@@ -27,6 +28,7 @@ export const UserPage = () => {
 
   return (
     <>
+    <AddUser></AddUser>
       <main>
         <div className="left binding color">
           <i className="fa-regular fa-user"></i>
@@ -47,8 +49,10 @@ export const UserPage = () => {
             })
           }
         </div>
+
+        {/* Boton para agregar*/}
         <div>
-          <button className='btn btn-primary'>Agregar</button>
+          <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal" >Agregar</button>
         </div>
       </main>
     </>
