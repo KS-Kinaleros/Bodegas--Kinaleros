@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { CardAddService } from '../components/CardAddService'
 import axios from 'axios'
+import { AddService } from '../components/Add/AddService'
 
 export const AddServicePage = () => {
   const [addService, setAddService] = useState([{}])
@@ -22,6 +23,7 @@ export const AddServicePage = () => {
 
   return (
     <>
+    <AddService></AddService>
       <main>
         <div className="left binding color">
           <i className="fa-solid fa-plus"></i>
@@ -44,8 +46,10 @@ export const AddServicePage = () => {
             })
           }
         </div>
+
+        {/* Boton para agregar aditional service */}
         <div>
-          <button className='btn btn-primary'>Agregar</button>
+          <button className='btn btn-primary' data-bs-toggle="modal" data-bs-target="#myModal">Agregar</button>
         </div>
       </main>
     </>
