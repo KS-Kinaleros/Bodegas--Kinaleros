@@ -4,6 +4,11 @@ import axios from 'axios'
 export const AddCellar = () => {
     const title = "Add Cellar"
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -23,7 +28,7 @@ export const AddCellar = () => {
 
     const addCellar = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/cellar/save', form)
+            const { data } = await axios.post('http://localhost:3200/cellar/save', form, { headers: headers })
             alert(data.message)
             window.location.reload()
 

@@ -7,6 +7,10 @@ export const AddLease = () => {
     const [cellars, setCellars] = useState([])
     const [addServices, setAddServices] = useState([])
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
 
     const [form, setForm] = useState({
         client: '',
@@ -26,7 +30,7 @@ export const AddLease = () => {
 
     const getUsers = async () => {
         try {
-            const { data } = await axios('http://localhost:3200/user/getUsers')
+            const { data } = await axios('http://localhost:3200/user/getUsers', { headers: headers })
             setUsers(data.users)
         } catch (err) {
             console.log(err);
@@ -53,14 +57,14 @@ export const AddLease = () => {
 
     const addLease = async () => {
         try {
-            let lease ={
+            let lease = {
                 client: document.getElementById('inputClient').value,
                 worker: document.getElementById('inputWorker').value,
                 cellar: document.getElementById('inputCellar').value,
-                additionalService: document.getElementById('inputService').value, 
+                additionalService: document.getElementById('inputService').value,
                 total: document.getElementById('inputTotal').value
             }
-            
+
             console.log(lease)
             console.log(form)
             const { data } = await axios.post('http://localhost:3200/lease/save', lease)
@@ -72,9 +76,11 @@ export const AddLease = () => {
         }
     }
 
-    useEffect(()=> {getUsers();
-    getCellars();
-    getAddServices();} ,[])
+    useEffect(() => {
+        getUsers();
+        getCellars();
+        getAddServices();
+    }, [])
 
 
     return (

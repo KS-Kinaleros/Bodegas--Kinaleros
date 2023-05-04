@@ -3,7 +3,12 @@ import React, { useState } from 'react'
 
 export const AddService = () => {
     const title = "Add Service"
-    
+
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -20,7 +25,7 @@ export const AddService = () => {
 
     const addService = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/service/add', form)
+            const { data } = await axios.post('http://localhost:3200/service/add', form, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {

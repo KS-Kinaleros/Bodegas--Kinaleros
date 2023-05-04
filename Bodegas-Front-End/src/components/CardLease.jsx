@@ -3,10 +3,14 @@ import React from 'react'
 import { UpdLease } from './update/UpdLease'
 
 export const CardLease = ({ _id, title, client, worker, total }) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('token')
+  }
 
   const elimLease = async (_id) => {
     try {
-      const { data } = await axios.delete(`http://localhost:3200/lease/delete/${_id}`)
+      const { data } = await axios.delete(`http://localhost:3200/lease/delete/${_id}`, { headers: headers })
       alert(data.message)
       window.location.reload()
     } catch (err) {
