@@ -63,7 +63,7 @@ export const AddCellar = () => {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Price</label>
-                                <input onChange={handleChange} name='price' type="text" className="form-control" required />
+                                <input onChange={handleChange} name='price' type="number" className="form-control" required />
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Availability</label>

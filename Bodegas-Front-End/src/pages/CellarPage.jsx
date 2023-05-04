@@ -44,7 +44,7 @@ export const CellarPage = () => {
 
   return (
     <>
-      {/* <AddCellar></AddCellar> */}
+      <AddCellar></AddCellar>
       <main>
         <div className="left binding color">
           <i className="fa-solid fa-warehouse"></i>
