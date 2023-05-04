@@ -17,6 +17,8 @@ export const UpdLease = () => {
     }
 
     return (
-        <div>UpdLease</div>
+        <>
+        <h1>holi profe</h1>
+        </>
     )
 }

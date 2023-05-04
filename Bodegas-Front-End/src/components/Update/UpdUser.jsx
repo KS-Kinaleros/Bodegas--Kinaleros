@@ -17,6 +17,8 @@ export const UpdUser = () => {
     }
 
     return (
-        <div>UpdUser</div>
+        <>
+        <h1>holi profe</h1>
+        </>
     )
 }

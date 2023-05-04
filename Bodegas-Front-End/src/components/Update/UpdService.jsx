@@ -15,6 +15,8 @@ export const UpdService = () => {
     }
 
     return (
-        <div>UpdService</div>
+        <>
+        <h1>holi profe</h1>
+        </>
     )
 }

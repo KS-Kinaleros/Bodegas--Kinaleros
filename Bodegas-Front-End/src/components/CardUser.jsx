@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { UpdUser } from './Update/UpdUser'
 
 export const CardUsers = ({ _id, title, surname, phone, email }) => {
 
@@ -15,6 +16,7 @@ export const CardUsers = ({ _id, title, surname, phone, email }) => {
 
   return (
     <>
+      <UpdUser></UpdUser>
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
         <div className="card-body">
           <h5 className='card-title'>{title}</h5>

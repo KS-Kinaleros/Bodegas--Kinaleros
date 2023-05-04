@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React from 'react'
+import { UpdService } from './Update/UpdService'
 
 export const CardAddService = ({_id,title, description}) => {
 
@@ -15,6 +16,7 @@ export const CardAddService = ({_id,title, description}) => {
   
   return (
     <>
+    <UpdService></UpdService>
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
         <div className="card-body">
           <h5 className='card-title'>{ title }</h5>
