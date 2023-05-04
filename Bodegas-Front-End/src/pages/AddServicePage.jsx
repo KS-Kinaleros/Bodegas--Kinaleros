@@ -34,10 +34,11 @@ export const AddServicePage = () => {
 
         <div className='row g-0 justify-content-center'>
           {
-            addService.map(({ name, description }, i) => {
+            addService.map(({ _id, name, description }, i) => {
               return (
                 <CardAddService
                   key={i}
+                  _id={_id}
                   title={name}
                   description={description}
                 >
