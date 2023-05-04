@@ -16,7 +16,7 @@ export const CardCellar = ({ _id, title, description, location }) => {
 
   return (
     <>
-    {/* probando cosas */}
+      {/* probando cosas */}
       <UpdCellar _id={_id} ></UpdCellar>
 
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>

@@ -16,7 +16,8 @@ export const CardUsers = ({ _id, title, surname, phone, email }) => {
 
   return (
     <>
-      <UpdUser></UpdUser>
+      {/* para el update */}
+      {/* <UpdUser></UpdUser> */}
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
         <div className="card-body">
           <h5 className='card-title'>{title}</h5>
@@ -24,7 +25,7 @@ export const CardUsers = ({ _id, title, surname, phone, email }) => {
           <p className='card-text'>{phone}</p>
           <p className='card-text'>{email}</p>
           <button className='btn btn-warning'>Editar</button>
-          <button onClick={()=> elimUser(_id)} className='btn btn-danger'>Eliminar</button>
+          <button onClick={() => elimUser(_id)} className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>

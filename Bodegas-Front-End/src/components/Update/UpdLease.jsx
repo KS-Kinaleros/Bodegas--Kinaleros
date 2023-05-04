@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const UpdLease = () => {
-    const [form, setForm] = useState({
+/*     const [form, setForm] = useState({
         client: '',
         worker: '',
         cellar: '',
@@ -14,7 +14,7 @@ export const UpdLease = () => {
             ...form,
             [e.target.name]: e.target.value
         })
-    }
+    } */
 
     return (
         <>

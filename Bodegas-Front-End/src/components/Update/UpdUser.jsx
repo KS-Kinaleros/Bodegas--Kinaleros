@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const UpdUser = () => {
-    const [form, setForm] = useState({
+/*     const [form, setForm] = useState({
         name: '',
         surname: '',
         username: '',
@@ -14,7 +14,7 @@ export const UpdUser = () => {
             ...form,
             [e.target.name]: e.target.value
         })
-    }
+    } */
 
     return (
         <>

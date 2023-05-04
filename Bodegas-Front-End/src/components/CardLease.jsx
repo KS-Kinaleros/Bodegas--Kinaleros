@@ -2,13 +2,13 @@ import axios from 'axios'
 import React from 'react'
 import { UpdLease } from './update/UpdLease'
 
-export const CardLease = ({_id,title, client, worker, total}) => {
+export const CardLease = ({ _id, title, client, worker, total }) => {
 
-  const elimLease = async (_id)=>{
+  const elimLease = async (_id) => {
     try {
-        const {data} = await axios.delete(`http://localhost:3200/lease/delete/${_id}`)
-        alert(data.message)
-        window.location.reload()
+      const { data } = await axios.delete(`http://localhost:3200/lease/delete/${_id}`)
+      alert(data.message)
+      window.location.reload()
     } catch (err) {
       console.log(err)
     }
@@ -16,7 +16,8 @@ export const CardLease = ({_id,title, client, worker, total}) => {
 
   return (
     <>
-    <UpdLease></UpdLease>
+      {/* para el update */}
+      {/* <UpdLease></UpdLease> */}
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
         <div className="card-body">
           <h5 className='card-title'>{title}</h5>
@@ -24,7 +25,7 @@ export const CardLease = ({_id,title, client, worker, total}) => {
           <p className='card-text'>{worker}</p>
           <p className='card-text'>{total}</p>
           <button className='btn btn-warning'>Editar</button>
-          <button onClick={()=> elimLease(_id)} className='btn btn-danger'>Eliminar</button>
+          <button onClick={() => elimLease(_id)} className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>
