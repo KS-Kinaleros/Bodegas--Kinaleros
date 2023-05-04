@@ -3,6 +3,7 @@
 const express = require('express')
 const api = express.Router();
 const cellarController = require('./cellar.controller')
+const { ensureAuth, isAdmin } = require('../services/authenticated');
 
 api.get('/test', cellarController.test);
 api.post('/save', cellarController.addCellar)

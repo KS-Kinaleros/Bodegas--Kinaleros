@@ -2,6 +2,7 @@
 const express = require('express')
 const api = express.Router();
 const addServiceController = require('./additionalService.controller')
+const { ensureAuth, isAdmin } = require('../services/authenticated');
 
 api.get('/test', addServiceController.test)
 api.get('/get',addServiceController.getServices)

@@ -3,6 +3,7 @@
 const express = require('express');
 const api = express.Router();
 const leaseController = require('./lease.controller');
+const { ensureAuth, isAdmin } = require('../services/authenticated');
 
 api.get('/test', leaseController.test)
 api.post('/save', leaseController.saveLease)
