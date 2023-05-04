@@ -85,7 +85,7 @@ exports.deleteCellar = async (req, res) => {
         let deletedCellar = await Cellar.findOneAndDelete({ _id: cellarId });
         if (!deletedCellar) return res.status(404).send({ message: 'Error removing cellar or already deleted' });
         return res.send({ message: 'Cellar deleted sucessfully', deletedCellar });
-    } catch (er) {
+    } catch (err) {
         console.error(err);
         return res.status(500).send({ message: 'Error deleting cellar' })
     }
