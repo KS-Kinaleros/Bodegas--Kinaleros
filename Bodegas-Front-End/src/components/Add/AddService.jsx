@@ -56,7 +56,7 @@ export const AddService = () => {
                             {/* botones para cancelar o agregar */}
                             <div className='modal-footer'>
                                 <button onClick={() => addService()} type="submit" className="btn btn-primary">Add Cellar</button>
-                                <button type="submit" className="btn btn-secondary" data-bs-dismiss="modal" >Cancelar</button>
+                                <button type="submit" className="btn btn-danger" data-bs-dismiss="modal" >Cancelar</button>
                             </div>
                         </div>
                     </div>
