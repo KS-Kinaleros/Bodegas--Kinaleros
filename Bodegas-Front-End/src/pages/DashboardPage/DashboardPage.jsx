@@ -55,7 +55,7 @@ export const DashboardPage = () => {
               </Link>
             </li>
 
-            <li>
+\vscode-git-repository-in-parent-folders            <li>
               <Link to='additionalServices'>
                 <button>
                   <span className='text'>ADDITIONAL SERVICES</span>
@@ -69,11 +69,11 @@ export const DashboardPage = () => {
                 <span className='text'>Welcome: {dataUser.username}, {dataUser.role}</span>
               </button>
             </li>
-            <li>
+            {/* <li>
               <button>
                 <span className='text'>Settings</span>
               </button>
-            </li>
+            </li> */}
             <li>
               <button onClick={logOut}>
                 <span className='text'>LogOut</span>
