@@ -53,7 +53,17 @@ export const AddLease = () => {
 
     const addLease = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/lease/save', form)
+            let lease ={
+                client: document.getElementById('inputClient').value,
+                worker: document.getElementById('inputWorker').value,
+                cellar: document.getElementById('inputCellar').value,
+                additionalService: document.getElementById('inputService').value, 
+                total: document.getElementById('inputTotal').value
+            }
+            
+            console.log(lease)
+            console.log(form)
+            const { data } = await axios.post('http://localhost:3200/lease/save', lease)
             alert(data.message)
             window.location.reload()
         } catch (err) {
@@ -88,7 +98,7 @@ export const AddLease = () => {
                                     {
                                         users.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id}> {name} </option>
+                                                <option key={i} value={_id} id='inputClient'> {name} </option>
                                             )
                                         })
                                     }
@@ -103,7 +113,7 @@ export const AddLease = () => {
                                     {
                                         users.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id}> {name} </option>
+                                                <option key={i} value={_id} id='inputWorker'> {name} </option>
                                             )
                                         })
                                     }
@@ -119,7 +129,7 @@ export const AddLease = () => {
                                     {
                                         cellars.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id}>{name}</option>
+                                                <option key={i} value={_id} id='inputCellar'>{name}</option>
                                             )
                                         })
                                     }
@@ -134,7 +144,7 @@ export const AddLease = () => {
                                     {
                                         addServices.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id}>{name}</option>
+                                                <option key={i} value={_id} id='inputService'>{name}</option>
                                             )
                                         })
                                     }
@@ -144,7 +154,7 @@ export const AddLease = () => {
                             {/* total */}
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Total</label>
-                                <input onChange={handleChange} type="number" className="form-control" name='total' required />
+                                <input onChange={handleChange} id='inputTotal' type="number" className="form-control" name='total' required />
                             </div>
 
                             {/* botones para cancelar o agregar */}
