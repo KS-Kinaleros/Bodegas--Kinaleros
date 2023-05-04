@@ -9,6 +9,7 @@ api.post('/save', cellarController.addCellar)
 api.put('/update/:id', cellarController.updateCellar)
 api.delete('/delete/:id', cellarController.deleteCellar)
 api.get('/get', cellarController.getCellars)
+api.get('/getId/:id', cellarController.getCellarId)
 api.post('/search', cellarController.searchCellar)
 api.put('/availability/:id',cellarController.availability);
 

@@ -12,5 +12,6 @@ api.post('/login', userController.loginUser)
 api.put('/update/:id', ensureAuth, userController.updateUser)
 api.delete('/delete/:id', userController.deleteUser)
 api.get('/getUsers', userController.getUsers)
+api.get('/getId/:id', userController.getUserId)
 
 module.exports = api;

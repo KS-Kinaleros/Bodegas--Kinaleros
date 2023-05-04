@@ -142,3 +142,14 @@ exports.getUsers = async(req, res)=>{
         return res.status(500).send({ message: " Error getting users" })
     }
 }
+
+exports.getUserId = async (req, res)=>{
+    try {
+        let userId = req.params.id;
+        let user = await User.findOne({_id: userId})
+        if(!user) return res.status(404).send({message: 'User Not Found'})
+        return res.status(200).send({user})
+    } catch (err) { 
+        console.log(err)
+    }
+}

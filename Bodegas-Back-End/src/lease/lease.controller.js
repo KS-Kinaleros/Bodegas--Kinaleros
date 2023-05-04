@@ -74,3 +74,14 @@ exports.getLease = async (req, res) => {
         return res.status(500).send({ message: "Error getting lease" })
     }
 }
+
+exports.getLeaseId = async(req, res)=>{
+    try {
+        let leaseId = req.params.id;
+        let lease = await Lease.findOne({_id: leaseId}).populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService)
+        if(!lease) res.status(404).send({message:'Lease Not Found'})
+        return res.status(200).send({lease})
+    } catch (err) {
+        console.error(err)
+    }
+}
