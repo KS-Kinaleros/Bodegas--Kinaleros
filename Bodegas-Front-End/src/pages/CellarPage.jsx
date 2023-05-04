@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { CardCellar } from '../components/CardCellar'
-import { Link } from 'react-router-dom'
 import { AddCellar } from '../components/Add/AddCellar'
 
 export const CellarPage = () => {
@@ -55,10 +54,11 @@ export const CellarPage = () => {
 
         <div className='row g-0 justify-content-center'>
           {
-            cellars.map(({ name, description, location }, i) => {
+            cellars.map(({_id, name, description, location }, i) => {
               return (
                 <CardCellar
                   key={i}
+                  _id={_id}
                   title={name}
                   description={description}
                   location={location}

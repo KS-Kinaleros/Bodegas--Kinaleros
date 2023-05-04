@@ -32,10 +32,11 @@ export const LeasePage = () => {
 
         <div className='row g-0 justify-content-center'>
           {
-            cellars.map(({ cellar, client, worker, total }, i) => {
+            cellars.map(({_id, cellar, client, worker, total }, i) => {
               return (
                 <CardLease
                   key={i}
+                  _id={_id}
                   title={cellar?.name}
                   client={client?.name}
                   worker={worker?.name}
