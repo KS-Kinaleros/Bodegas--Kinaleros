@@ -36,10 +36,11 @@ export const UserPage = () => {
         </div>
         <div className='row g-0 justify-content-center'>
           {
-            users.map(({ name, surname, phone, email }, i) => {
+            users.map(({ _id, name, surname, phone, email }, i) => {
               return (
                 <CardUsers
                   key={i}
+                  _id={_id}
                   title={name}
                   surname={surname}
                   phone={phone}

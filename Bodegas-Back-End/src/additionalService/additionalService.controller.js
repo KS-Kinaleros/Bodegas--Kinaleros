@@ -47,11 +47,9 @@ exports.updateAddService = async (req, res) => {
 exports.deleteAddService = async (req, res) => {
     try {
         let addServiceId = req.params.id;
-        let data = req.body
-
         let addServiceDelete = await AddService.findOneAndDelete({_id: addServiceId})
         if(!addServiceDelete) return res.status(400).send({message: "Addtional service no eliminado"})
-        return res.status(404).send({message:`Additional service ${addServiceDelete.name} eliminado`})
+        return res.send({message:`Additional service ${addServiceDelete.name} eliminado`})
     } catch (er) {
         console.error(err)
         return res.status(500).send({message: "Error deleting Additional service"})
