@@ -1,6 +1,18 @@
+import axios from 'axios'
 import React from 'react'
 
-export const CardLease = ({title, client, worker, total}) => {
+export const CardLease = ({_id,title, client, worker, total}) => {
+
+  const elimLease = async (_id)=>{
+    try {
+        const {data} = await axios.delete(`http://localhost:3200/lease/delete/${_id}`)
+        alert(data.message)
+        window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
@@ -10,7 +22,7 @@ export const CardLease = ({title, client, worker, total}) => {
           <p className='card-text'>{worker}</p>
           <p className='card-text'>{total}</p>
           <button className='btn btn-warning'>Editar</button>
-          <button className='btn btn-danger'>Eliminar</button>
+          <button onClick={()=> elimLease(_id)} className='btn btn-danger'>Eliminar</button>
         </div>
       </div>
     </>
