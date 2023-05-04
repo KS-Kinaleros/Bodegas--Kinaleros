@@ -6,6 +6,17 @@ import { AddCellar } from '../components/Add/AddCellar'
 export const CellarPage = () => {
   const [cellars, setCellars] = useState([{}])
 
+  const [form, setForm] = useState({
+    name:''
+  })
+
+  const handleChange = (e)=>{
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    })
+  }
+
   const getCellars = async () => {
     try {
       const { data } = await axios('http://localhost:3200/cellar/get')
@@ -15,27 +26,25 @@ export const CellarPage = () => {
       }
     } catch (err) {
       console.log(err)
-      throw new Error(err.response.message || 'Error getting Cellars')
     }
   }
 
-  /* const searchCellars = async () => {
+  const searchCellars = async () => {
     try {
       setCellars([])
-      const { data } = axios.get('http://localhost:3200/cellar/search', form)
-      if(!data) getCellars()
+      const { data } = await axios.post('http://localhost:3200/cellar/search', form)
+      if(!data.cellars) getCellars()
       setCellars(data.cellars)
     } catch (err) {
       console.log(err)
-      throw new Error(err.response.message || 'Error searching Cellars')
     }
-  } */
+  }
 
   useEffect(() => getCellars, [])
 
   return (
     <>
-      <AddCellar></AddCellar>
+      {/* <AddCellar></AddCellar> */}
       <main>
         <div className="left binding color">
           <i className="fa-solid fa-warehouse"></i>
@@ -45,9 +54,9 @@ export const CellarPage = () => {
         {/* bara de busqueda */}
         <div>
           <div className="input-group rounded">
-            <input /* onChange={handleChange} */ name='name' type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <input onChange={handleChange} name='name' type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
             <span className="input-group-text border-0" id="search-addon">
-              <button /* onClick={searchCellars} */><i className="fas fa-search"></i></button>
+              <button onClick={searchCellars}><i className="fas fa-search"></i></button>
             </span>
           </div>
         </div>
