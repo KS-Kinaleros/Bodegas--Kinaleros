@@ -121,13 +121,13 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         let userId = req.params.id;
-        let token = req.user.sub;
-        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"})
+        /* let token = req.user.sub;
+        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"}) */
 
-        let userDelete = await User.findByIdAndDelete({_id: token})
+        let userDelete = await User.findByIdAndDelete({_id: userId})
         if(!userDelete) return res.send({message:"la cuenta no fue encontrado y por ende no eliminada"})
         return res.send({message:`Cuenta con username ${userDelete.username} fue eliminada satisfactoriamente`})
-    } catch (er) {
+    } catch (err) {
         console.error(err)
         return res.status(500).send({ message: " Error al eliminar la cuenta" })
     }
