@@ -4,6 +4,11 @@ import React, { useEffect, useState } from 'react'
 export const UpdService = ({ _id }) => {
     const title = "Update Additional Service"
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const [addService, setAddService] = useState([{}])
 
     const [form, setForm] = useState({

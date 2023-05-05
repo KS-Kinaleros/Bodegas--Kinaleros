@@ -6,6 +6,10 @@ export const UpdCellar = ({ _id }) => {
 
     const [cellar, setCellar] = useState({})
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
 
     const [form, setForm] = useState({
         name: '',
@@ -26,7 +30,7 @@ export const UpdCellar = ({ _id }) => {
 
     const updateCellar = async () => {
         try {
-            const { data } = await axios.put(`http://localhost:3200/cellar/update/${_id}`, form)
+            const { data } = await axios.put(`http://localhost:3200/cellar/update/${_id}`, form, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {

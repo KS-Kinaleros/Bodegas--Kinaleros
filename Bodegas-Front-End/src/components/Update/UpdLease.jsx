@@ -17,6 +17,11 @@ export const UpdLease = ({ _id }) => {
                 total: ''
             }) */
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -33,7 +38,7 @@ export const UpdLease = ({ _id }) => {
                 additionalService: document.getElementById('inputService').value,
                 total: document.getElementById('inputTotal').value
             }
-            const { data } = await axios.put(`http://localhost:3200/lease/update/${_id}`, lease)
+            const { data } = await axios.put(`http://localhost:3200/lease/update/${_id}`, lease, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {

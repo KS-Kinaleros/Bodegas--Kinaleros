@@ -4,6 +4,11 @@ import axios from 'axios'
 export const UpdUser = ({ _id }) => {
     const title = "Update User"
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const [user, setUser] = useState({})
 
     const [form, setForm] = useState({
@@ -23,7 +28,7 @@ export const UpdUser = ({ _id }) => {
 
     const updateUser = async () => {
         try {
-            const { data } = await axios.put(`http://localhost:3200/user/update/${_id}`)
+            const { data } = await axios.put(`http://localhost:3200/user/update/${_id}`, form, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {

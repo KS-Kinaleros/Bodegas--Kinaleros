@@ -30,7 +30,7 @@ export const AddLease = () => {
 
     const getUsers = async () => {
         try {
-            const { data } = await axios('http://localhost:3200/user/getUsers', { headers: headers })
+            const { data } = await axios('http://localhost:3200/user/getUsers',)
             setUsers(data.users)
         } catch (err) {
             console.log(err);
@@ -68,7 +68,7 @@ export const AddLease = () => {
 
             console.log(lease)
             console.log(form)
-            const { data } = await axios.post('http://localhost:3200/lease/save', lease)
+            const { data } = await axios.post('http://localhost:3200/lease/save', lease, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {
