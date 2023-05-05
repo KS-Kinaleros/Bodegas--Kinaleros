@@ -5,6 +5,7 @@ const infoClient = ['name', 'surname']
 const infoWorker = ['name', 'surname']
 const infoCellar = ['name', 'description']
 const infoAddService = ['name', 'description']
+const infoAddService2 = ['name', 'description']
 
 exports.test = (req, res) => {
     res.send({ message: 'Test function is running' })
@@ -67,7 +68,7 @@ exports.deleteLease = async (req, res) => {
 
 exports.getLease = async (req, res) => {
     try {
-        let lease = await Lease.find().populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService);
+        let lease = await Lease.find().populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService).populate('additionalService2', infoAddService2);
         return res.send({message:"Lease found", lease})
     } catch (err) {
         console.error(err)
@@ -78,7 +79,7 @@ exports.getLease = async (req, res) => {
 exports.getLeaseId = async(req, res)=>{
     try {
         let leaseId = req.params.id;
-        let lease = await Lease.findOne({_id: leaseId}).populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService)
+        let lease = await Lease.findOne({_id: leaseId}).populate('client', infoClient).populate('worker', infoWorker).populate('cellar', infoCellar).populate('additionalService', infoAddService).populate('additionalService2', infoAddService2)
         if(!lease) res.status(404).send({message:'Lease Not Found'})
         return res.status(200).send({lease})
     } catch (err) {
