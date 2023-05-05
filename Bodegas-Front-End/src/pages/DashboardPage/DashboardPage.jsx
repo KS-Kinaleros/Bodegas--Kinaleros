@@ -53,9 +53,6 @@ export const DashboardPage = () => {
                   <span className='text'>LEASES</span>
                 </button>
               </Link>
-            </li>
-
-\vscode-git-repository-in-parent-folders            <li>
               <Link to='additionalServices'>
                 <button>
                   <span className='text'>ADDITIONAL SERVICES</span>

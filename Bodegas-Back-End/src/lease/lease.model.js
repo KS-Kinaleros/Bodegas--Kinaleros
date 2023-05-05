@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 
 const leaseSchema = mongoose.Schema({
     client:{
-        type: mongoose.Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         require: true
     },

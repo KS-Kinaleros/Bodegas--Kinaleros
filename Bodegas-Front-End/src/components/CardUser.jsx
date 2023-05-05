@@ -3,10 +3,14 @@ import React from 'react'
 import { UpdUser } from './Update/UpdUser'
 
 export const CardUsers = ({ _id, title, surname, phone, email }) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('token')
+  }
 
   const elimUser = async (_id) => {
     try {
-      const { data } = await axios.delete(`http://localhost:3200/user/delete/${_id}`)
+      const { data } = await axios.delete(`http://localhost:3200/user/delete/${_id}`, { headers: headers })
       alert(data.message)
       window.location.reload()
     } catch (err) {

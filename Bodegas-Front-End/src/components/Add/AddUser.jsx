@@ -4,6 +4,11 @@ import React, { useState } from 'react'
 export const AddUser = () => {
     const title = "Add Client"
 
+    const headers = {
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+    }
+
     const [form, setForm] = useState({
         name: '',
         surname: '',
@@ -23,7 +28,7 @@ export const AddUser = () => {
 
     const addClient = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/user/saveClient', form)
+            const { data } = await axios.post('http://localhost:3200/user/saveClient', form, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {

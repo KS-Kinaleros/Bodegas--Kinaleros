@@ -3,10 +3,14 @@ import React from 'react'
 import { UpdService } from './Update/UpdService'
 
 export const CardAddService = ({ _id, title, description }) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('token')
+  }
 
   const elimService = async (_id) => {
     try {
-      const { data } = await axios.delete(`http://localhost:3200/service/delete/${_id}`)
+      const { data } = await axios.delete(`http://localhost:3200/service/delete/${_id}`, { headers: headers })
       alert(data.message)
       window.location.reload()
     } catch (err) {

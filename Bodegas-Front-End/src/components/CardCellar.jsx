@@ -3,10 +3,14 @@ import React from 'react'
 import { UpdCellar } from './update/UpdCellar'
 
 export const CardCellar = ({ _id, title, description, location }) => {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Authorization': localStorage.getItem('token')
+  }
 
   const elimCellar = async (_id) => {
     try {
-      const { data } = await axios.delete(`http://localhost:3200/cellar/delete/${_id}`)
+      const { data } = await axios.delete(`http://localhost:3200/cellar/delete/${_id}`, { headers: headers })
       alert(data.message)
       window.location.reload()
     } catch (err) {
