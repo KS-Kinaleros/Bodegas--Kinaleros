@@ -21,13 +21,13 @@ export const CardAddService = ({ _id, title, description }) => {
   return (
     <>
       {/* Para el update */}
-      {/* <UpdService></UpdService> */}
+      <UpdService _id={_id}></UpdService>
 
       <div className="card m-3 g-0" style={{ maxWidth: '18rem', maxHeight: '20rem' }}>
         <div className="card-body">
           <h5 className='card-title'>{title}</h5>
           <p className='card-text'>{description}</p>
-          <button className='btn btn-warning'>Editar</button>
+          <button className='btn btn-warning' data-bs-toggle="modal" data-bs-target="#myService">Editar</button>
           <button onClick={() => elimService(_id)} className='btn btn-danger'>Eliminar</button>
         </div>
       </div>

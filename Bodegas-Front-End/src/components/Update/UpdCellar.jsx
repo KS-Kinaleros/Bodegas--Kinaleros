@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export const UpdCellar = ({_id}) => {
+export const UpdCellar = ({ _id }) => {
     const title = "Update Cellar"
 
     const [cellar, setCellar] = useState({})
@@ -24,7 +24,7 @@ export const UpdCellar = ({_id}) => {
 
     }
 
-    const updateCellar = async (_id) => {
+    const updateCellar = async () => {
         try {
             const { data } = await axios.put(`http://localhost:3200/cellar/update/${_id}`, form)
             alert(data.message)
@@ -36,9 +36,9 @@ export const UpdCellar = ({_id}) => {
     }
 
     /* viendo si tiene que llevar un get para el update */
-    const getCellarId = async (_id) => {
+    const getCellarId = async () => {
         try {
-            const {data} = await axios.get(`http://localhost:3200/cellar/getId/${_id}`)
+            const { data } = await axios.get(`http://localhost:3200/cellar/getId/${_id}`)
             setCellar(data.cellar)
             console.log(data.cellar)
         } catch (err) {
@@ -47,7 +47,7 @@ export const UpdCellar = ({_id}) => {
         }
     }
 
-    useEffect(()=> getCellarId,[])
+    useEffect(() => getCellarId, [])
 
     return (
         <>
