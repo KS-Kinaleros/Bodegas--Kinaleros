@@ -15,7 +15,7 @@ exports.saveLease = async (req, res) => {
         //obtener data
         let data = req.body
         //validar que cellar no este duplicada
-        let leaseExist = await Lease.findOne({'cellar.id': data.cellar.id})
+        let leaseExist = await Lease.findOne({cellar: data.cellar})
         if(leaseExist) return res.status(500).send({message:"El arrendamiento ya ha sido creado"})
         //guardar
         let leaseSave = new Lease(data)
