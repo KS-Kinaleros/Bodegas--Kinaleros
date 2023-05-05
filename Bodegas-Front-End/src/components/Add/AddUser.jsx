@@ -2,7 +2,8 @@ import axios from 'axios'
 import React, { useState } from 'react'
 
 export const AddUser = () => {
-    const title = "Add Client"
+    /* const title = "Add Client" */
+    const title = "Add Worker"
 
     const headers = {
         'Content-Type': 'application/json',
@@ -26,9 +27,9 @@ export const AddUser = () => {
 
     }
 
-    const addClient = async () => {
+    const addWorker = async () => {
         try {
-            const { data } = await axios.post('http://localhost:3200/user/saveClient', form, { headers: headers })
+            const { data } = await axios.post('http://localhost:3200/user/saveWorker', form, { headers: headers })
             alert(data.message)
             window.location.reload()
         } catch (err) {
@@ -36,6 +37,18 @@ export const AddUser = () => {
             throw new Error(err.response.message || 'Error add cellar')
         }
     }
+
+
+    /*     const addClient = async () => {
+            try {
+                const { data } = await axios.post('http://localhost:3200/user/saveClient', form, { headers: headers })
+                alert(data.message)
+                window.location.reload()
+            } catch (err) {
+                console.log(err)
+                throw new Error(err.response.message || 'Error add cellar')
+            }
+        } */
 
 
     return (
@@ -77,7 +90,8 @@ export const AddUser = () => {
 
                             {/* botones para cancelar o agregar */}
                             <div className='modal-footer'>
-                                <button onClick={() => addClient()} type="submit" className="btn btn-primary">Add Client</button>
+                                <button onClick={() => addWorker()} type="submit" className="btn btn-primary">Add Worker</button>
+                                {/* <button onClick={() => addClient()} type="submit" className="btn btn-primary">Add Client</button> */}
                                 <button type="submit" className="btn btn-danger" data-bs-dismiss="modal" >Cancelar</button>
                             </div>
                         </div>

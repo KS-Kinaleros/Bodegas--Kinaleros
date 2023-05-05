@@ -15,6 +15,7 @@ export const CardUsers = ({ _id, title, surname, phone, email }) => {
       window.location.reload()
     } catch (err) {
       console.log(err)
+      alert(err.response.data.message)
     }
   }
 

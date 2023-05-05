@@ -5,21 +5,24 @@ export const UpdLease = ({ _id }) => {
     const title = "Update Lease"
 
     const [lease, setLease] = useState({})
+    const [users, setUsers] = useState([])
+    const [cellars, setCellars] = useState([])
+    const [addServices, setAddServices] = useState([])
 
-    /*     const [form, setForm] = useState({
-            client: '',
-            worker: '',
-            cellar: '',
-            additionalService: '',
-            total: ''
+    /*         const [form, setForm] = useState({
+                client: '',
+                worker: '',
+                cellar: '',
+                additionalService: '',
+                total: ''
+            }) */
+
+    const handleChange = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value
         })
-    
-        const handleChange = (e) => {
-            setForm({
-                ...form,
-                [e.target.name]: e.target.value
-            })
-        } */
+    }
 
     const updateLease = async () => {
         try {
