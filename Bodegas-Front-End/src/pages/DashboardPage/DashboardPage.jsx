@@ -37,7 +37,7 @@ export const DashboardPage = () => {
               </Link>
             </li>
             {
-              dataUser.role == 'ADMIN' ? (
+              dataUser.role == 'ADMIN' || dataUser.role == 'WORKER'? (
                 <li>
                   <Link to='users'>
                     <button>
