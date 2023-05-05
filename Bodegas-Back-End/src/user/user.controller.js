@@ -1,6 +1,7 @@
 'use strict'
 
 const User = require('./user.model')
+const Lease = require('../lease/lease.model')
 const { validateData, encrypt, checkPassword } = require('../utils/validate');
 const { createToken } = require('../services/jwt');
 
@@ -98,6 +99,25 @@ exports.saveUser = async (req, res) => {
     }
 }
 
+exports.saveWorker = async (req, res) => {
+    try {
+        let data = req.body
+        let params = {
+            password: data.password
+        }
+        let validate = validateData(params)
+        if (validate) return res.status(400).send(validate)
+        data.password = await encrypt(data.password)
+        data.role = "WORKER"
+        let user = new User(data)
+        await user.save()
+        return res.send({ message: "Cuenta Worker creada satisfactoriamente" })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: "Error creating account" })
+    }
+}
+
 exports.updateUser = async (req, res) => {
     try {
         let userId = req.params.id;
@@ -124,6 +144,11 @@ exports.deleteUser = async (req, res) => {
         /* let token = req.user.sub;
         if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"}) */
 
+        //validacion de que no se pueda eliminar un usuario que este arrendando
+        let leaseUserExist = await Lease.findOne({client: userId})
+        if(leaseUserExist) return res.status(400).send({message: 'No se puede eliminar este usuario ya que esta arrendando'})
+
+        //eliminar el usuario
         let userDelete = await User.findByIdAndDelete({_id: userId})
         if(!userDelete) return res.send({message:"la cuenta no fue encontrado y por ende no eliminada"})
         return res.send({message:`Cuenta con username ${userDelete.username} fue eliminada satisfactoriamente`})
