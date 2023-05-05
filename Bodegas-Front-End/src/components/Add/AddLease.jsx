@@ -100,11 +100,11 @@ export const AddLease = () => {
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Client</label>
                                 {/* <input onChange={handleChange} name='name' type="text" className="form-control" required /> */}
-                                <select className="form-control" name="client" >
+                                <select className="form-control" name="client" id='inputClient'>
                                     {
                                         users.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id} id='inputClient'> {name} </option>
+                                                <option key={i} value={_id} > {name} </option>
                                             )
                                         })
                                     }
@@ -115,11 +115,11 @@ export const AddLease = () => {
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Worker</label>
                                 {/* <input onChange={handleChange} name='description' type="text" className="form-control" required /> */}
-                                <select className="form-control" name="worker" >
+                                <select className="form-control" name="worker" id='inputWorker'>
                                     {
                                         users.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id} id='inputWorker'> {name} </option>
+                                                <option key={i} value={_id} > {name} </option>
                                             )
                                         })
                                     }
@@ -131,11 +131,11 @@ export const AddLease = () => {
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Cellar</label>
                                 {/* <input onChange={handleChange} name='size' type="text" className="form-control" required /> */}
-                                <select className="form-control" name="cellar" >
+                                <select className="form-control" name="cellar" id='inputCellar'>
                                     {
                                         cellars.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id} id='inputCellar'>{name}</option>
+                                                <option key={i} value={_id} >{name}</option>
                                             )
                                         })
                                     }
@@ -146,11 +146,11 @@ export const AddLease = () => {
                             <div className="mb-3">
                                 <label htmlFor="" className="form-label">Aditional Service</label>
                                 {/* <input onChange={handleChange} name='location' type="text" className="form-control" required /> */}
-                                <select className="form-control" name="additionalService" >
+                                <select className="form-control" name="additionalService" id='inputService' >
                                     {
                                         addServices.map(({ _id, name }, i) => {
                                             return (
-                                                <option key={i} value={_id} id='inputService'>{name}</option>
+                                                <option key={i} value={_id} >{name}</option>
                                             )
                                         })
                                     }
