@@ -62,6 +62,7 @@ export const AddLease = () => {
                 worker: document.getElementById('inputWorker').value,
                 cellar: document.getElementById('inputCellar').value,
                 additionalService: document.getElementById('inputService').value,
+                additionalService2: document.getElementById('inputService2').value,
                 total: document.getElementById('inputTotal').value
             }
 
@@ -147,6 +148,21 @@ export const AddLease = () => {
                                 <label htmlFor="" className="form-label">Aditional Service</label>
                                 {/* <input onChange={handleChange} name='location' type="text" className="form-control" required /> */}
                                 <select className="form-control" name="additionalService" id='inputService' >
+                                    {
+                                        addServices.map(({ _id, name }, i) => {
+                                            return (
+                                                <option key={i} value={_id} >{name}</option>
+                                            )
+                                        })
+                                    }
+                                </select>
+                            </div>
+                            
+                            {/* additionalService 2 */}
+                            <div className="mb-3">
+                                <label htmlFor="" className="form-label">More Aditional Service</label>
+                                {/* <input onChange={handleChange} name='location' type="text" className="form-control" required /> */}
+                                <select className="form-control" name="additionalService2" id='inputService2' >
                                     {
                                         addServices.map(({ _id, name }, i) => {
                                             return (
