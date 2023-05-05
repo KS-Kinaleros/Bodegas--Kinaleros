@@ -121,12 +121,12 @@ exports.saveWorker = async (req, res) => {
 exports.updateUser = async (req, res) => {
     try {
         let userId = req.params.id;
-        let token = req.user.sub;
+        /* let token = req.user.sub; */
         let data = req.body
-        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"})
+        /* if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"}) */
         if(data.password || Object.entries(data).length === 0 || data.role) return res.status(400).send({message: 'Have submitted some data that cannot be updated'});
         let userUpdated = await User.findOneAndUpdate(
-            {_id: token},
+            {_id: userId},
             data,
             {new: true} 
         )
