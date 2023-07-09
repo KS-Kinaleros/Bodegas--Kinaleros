@@ -10,6 +10,7 @@ const port = process.env.PORT || 3200
 const userRoutes = require('../src/user/user.routes')
 const serviceRoutes = require('../src/additionalService/additionalService.routes')
 const cellarRoutes = require('../src/cellar/cellar.routes')
+const leaseRoutes = require('../src/lease/lease.routes')
 
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(morgan('dev'))
 app.use('/user', userRoutes)
 app.use('/cellar', cellarRoutes)
 app.use('/service', serviceRoutes) 
+app.use('/lease', leaseRoutes)
 
 exports.initServer = ()=>{
     app.listen(port);

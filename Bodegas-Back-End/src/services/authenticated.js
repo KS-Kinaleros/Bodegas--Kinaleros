@@ -30,7 +30,7 @@ exports.ensureAuth = (req, res, next)=>{
 exports.isAdmin = async(req, res, next)=>{
     try {
         let user = req.user;
-        if(user.role !== 'ADMIN') return res.status(403).send({message: 'Unauthorize user'})
+        if(user.role !== 'ADMIN' || user.role !== 'WORKER') return res.status(403).send({message: 'Unauthorize user'})
         next();
     } catch (err) {
         console.error(err)

@@ -1,6 +1,7 @@
 'use strict'
 
 const User = require('./user.model')
+const Lease = require('../lease/lease.model')
 const { validateData, encrypt, checkPassword } = require('../utils/validate');
 const { createToken } = require('../services/jwt');
 
@@ -16,6 +17,7 @@ exports.userDefault = async (req, res) => {
             username:"admin",
             password:"admin",
             phone:"12345678",
+            email:'admin@',
             role:"admin"
         }
         data.password = await encrypt(data.password)
@@ -44,8 +46,13 @@ exports.loginUser = async (req, res) => {
         let user = await User.findOne({ username: data.username })
         //validar la contraseña
         if (user && await checkPassword(data.password, user.password)) {
+            let userLogged = {
+                name: user.name,
+                username: user.username,
+                role: user.role
+            }
             let token = await createToken(user)
-            return res.send({ message: "user logged satisfactoriamente", token })
+            return res.send({ message: "user logged satisfactoriamente", token, userLogged })
         }
         return res.status(400).send({ message: "invalid credentials" })
     } catch (err) {
@@ -92,15 +99,34 @@ exports.saveUser = async (req, res) => {
     }
 }
 
+exports.saveWorker = async (req, res) => {
+    try {
+        let data = req.body
+        let params = {
+            password: data.password
+        }
+        let validate = validateData(params)
+        if (validate) return res.status(400).send(validate)
+        data.password = await encrypt(data.password)
+        data.role = "WORKER"
+        let user = new User(data)
+        await user.save()
+        return res.send({ message: "Cuenta Worker creada satisfactoriamente" })
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: "Error creating account" })
+    }
+}
+
 exports.updateUser = async (req, res) => {
     try {
         let userId = req.params.id;
-        let token = req.user.sub;
+        /* let token = req.user.sub; */
         let data = req.body
-        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"})
+        /* if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"}) */
         if(data.password || Object.entries(data).length === 0 || data.role) return res.status(400).send({message: 'Have submitted some data that cannot be updated'});
         let userUpdated = await User.findOneAndUpdate(
-            {_id: token},
+            {_id: userId},
             data,
             {new: true} 
         )
@@ -115,14 +141,40 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         let userId = req.params.id;
-        let token = req.user.sub;
-        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"})
+        /* let token = req.user.sub;
+        if(userId != token) return res.status(500).send({message: "No tienes permiso para realizar esta accion"}) */
 
-        let userDelete = await User.findByIdAndDelete({_id: token})
+        //validacion de que no se pueda eliminar un usuario que este arrendando
+        let leaseUserExist = await Lease.findOne({client: userId})
+        if(leaseUserExist) return res.status(400).send({message: 'No se puede eliminar este usuario ya que esta arrendando'})
+
+        //eliminar el usuario
+        let userDelete = await User.findByIdAndDelete({_id: userId})
         if(!userDelete) return res.send({message:"la cuenta no fue encontrado y por ende no eliminada"})
         return res.send({message:`Cuenta con username ${userDelete.username} fue eliminada satisfactoriamente`})
-    } catch (er) {
+    } catch (err) {
         console.error(err)
         return res.status(500).send({ message: " Error al eliminar la cuenta" })
+    }
+}
+
+exports.getUsers = async(req, res)=>{
+    try {
+        let users = await User.find();
+        return res.send({message: 'User found', users})
+    } catch (err) {
+        console.error(err)
+        return res.status(500).send({ message: " Error getting users" })
+    }
+}
+
+exports.getUserId = async (req, res)=>{
+    try {
+        let userId = req.params.id;
+        let user = await User.findOne({_id: userId})
+        if(!user) return res.status(404).send({message: 'User Not Found'})
+        return res.status(200).send({user})
+    } catch (err) { 
+        console.log(err)
     }
 }

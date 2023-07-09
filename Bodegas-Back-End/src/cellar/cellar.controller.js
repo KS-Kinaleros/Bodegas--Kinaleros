@@ -85,7 +85,7 @@ exports.deleteCellar = async (req, res) => {
         let deletedCellar = await Cellar.findOneAndDelete({ _id: cellarId });
         if (!deletedCellar) return res.status(404).send({ message: 'Error removing cellar or already deleted' });
         return res.send({ message: 'Cellar deleted sucessfully', deletedCellar });
-    } catch (er) {
+    } catch (err) {
         console.error(err);
         return res.status(500).send({ message: 'Error deleting cellar' })
     }
@@ -109,11 +109,21 @@ exports.availability = async(req, res) =>{
   
       if(!existEstado) return res.status(418).send({message: 'Estado no se pudo actualizar'});
           return res.send({message: 'Estado Actualizado', existEstado});
-  
     }catch(err){
       console.error(err);
       return res.status(500).send({message: "Error al cambiar esdato"})
     }
-  };
+};
+
+exports.getCellarId = async(req, res)=>{
+    try {
+        let cellarId = req.params.id;
+        let cellar = await Cellar.findOne({_id: cellarId})
+        if(!cellar) return res.status(404).send({message:'Cellar Not Found'})
+        return res.status(200).send({cellar})
+    } catch (err) {
+        console.error(err)
+    }
+}
   
   
